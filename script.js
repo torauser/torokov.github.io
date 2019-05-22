@@ -1,13 +1,27 @@
 menu.onclick = function myFunction() {
-    let x = document.getElementById('myTopnav');
-    if (x.className === 'topnav') {
+    let x = document.getElementById('navBar');
+    if (x.className === 'container__bar') {
         x.className += ' responsive';
     } else {
-        x.className = 'topnav';
+        x.className = 'container__bar';
     }
 }
 $(document).ready(()=>{
+    //resume animation
+    function setAnimation() {
+        let me = $('.me');
+        if (me.hasClass('me_animation')) {
+            me.removeClass('me_animation');
+            me.addClass('me_animation2');
+        } else {
+            me.addClass('me_animation');
+            me.removeClass('me_animation2');
+        }
+    }
+    setInterval(setAnimation, 1500);
+    //initial conditions
     $('.bar__me').addClass('bar-active');
+    $('.eng-img').addClass('skills_effect');
     //bar
     $('.bar__exp').on('click', (e)=>{
         let element = $(e.currentTarget);
@@ -33,23 +47,23 @@ $(document).ready(()=>{
         if (element.hasClass('eng-img')) {
             $('.text-eng').fadeIn();
             $('.text-eng').siblings().hide();
-            $('.eng-img').addClass('skills_effect');
-            $('.skills__card').children().removeClass('skills_effect');
+            $(element).addClass('skills_effect');
+            $('.js-img, .html-img, .more-img').removeClass('skills_effect');
         } else if (element.hasClass('js-img')) {
             $('.text-js').fadeIn();
             $('.text-js').siblings().hide();
-            $('.js-img').addClass('skills_effect');
-            $('.skills__card').children().removeClass('skills_effect');
+            $(element).addClass('skills_effect');
+            $('.eng-img, .html-img, .more-img').removeClass('skills_effect');
         } else if (element.hasClass('html-img')) {
             $('.text-html').fadeIn();
             $('.text-html').siblings().hide();
-            $('.html-img').addClass('skills_effect');
-            $('.skills__card').children().removeClass('skills_effect');
+            $(element).addClass('skills_effect');
+            $('.eng-img, .js-img, .more-img').removeClass('skills_effect');
         } else if (element.hasClass('more-img')) {
             $('.text-more').fadeIn();
             $('.text-more').siblings().hide();
-            $('.more-img').addClass('skills_effect');
-            $('.skills__card').children().removeClass('skills_effect');
+            $(element).addClass('skills_effect');
+            $('.eng-img, .js-img, .html-img').removeClass('skills_effect');
         }
     })
 })
