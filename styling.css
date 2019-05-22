@@ -290,3 +290,7 @@ nav {
         height: 400px;
     }
 }
+
+.skills_effect {
+    box-shadow: 0 0 15px #91e9ff;
+}
